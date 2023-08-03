@@ -11,9 +11,9 @@ text = QLabel('Натисни, щоб дізнатись переможця')
 winner = QLabel('?')
 
 line = QVBoxLayout()
-line.addWidget(text)
-line.addWidget(winner)
-line.addWidget(button)
+line.addWidget(text, alignment=Qt.AlignCenter)
+line.addWidget(winner, alignment=Qt.AlignCenter)
+line.addWidget(button, alignment=Qt.AlignCenter)
 
 
 
