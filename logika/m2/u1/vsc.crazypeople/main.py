@@ -22,7 +22,7 @@ def win():
     ran = randint(1, 100)
     winner.setText(str(ran))
     text.setText('Переможець')
-
+    button.hide()
 
 button.clicked.connect(win)
 
