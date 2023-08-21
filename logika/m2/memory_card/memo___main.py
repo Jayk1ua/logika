@@ -1,7 +1,7 @@
 from memo___card_layout import *
 from PyQt5.QtWidgets import QWidget, QApplication
 from random import shuffle # будемо змішувати відповіді в картці питання
-app = QApplication([])
+
 card_width, card_height = 600, 500 # початкові розміри вікна "картка"
 
 def show_data():

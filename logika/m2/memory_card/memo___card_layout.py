@@ -7,7 +7,7 @@ from PyQt5.QtWidgets import (
         QHBoxLayout, QVBoxLayout, 
         QGroupBox, QButtonGroup, QRadioButton,  
         QPushButton, QLabel, QSpinBox)
-
+app = QApplication([])
 
 
 btn_menu = QPushButton('Меню')
@@ -55,10 +55,10 @@ layout_res.addWidget(lb_correct, alignment=Qt.AlignHCenter)
 AnsGroupbox.setLayout(layout_res)
 AnsGroupbox.hide()
 
-Layout_line1 = QHBoxLayout
-Layout_line2 = QHBoxLayout
-Layout_line3 = QHBoxLayout
-Layout_line4 = QHBoxLayout
+Layout_line1 = QHBoxLayout()
+Layout_line2 = QHBoxLayout()
+Layout_line3 = QHBoxLayout()
+Layout_line4 = QHBoxLayout()
 
 Layout_line1.addWidget(btn_menu)
 Layout_line1.addStretch(1)
@@ -66,7 +66,7 @@ Layout_line1.addWidget(btn_sleep)
 Layout_line1.addWidget(box_minutes)
 Layout_line1.addWidget(QLabel('Хвилин'))
 
-Layout_line2.addWidget(lb_question, alignment=(Qt.AlignHCenter | Qt.alignVCenter))
+Layout_line2.addWidget(lb_question, alignment=(Qt.AlignHCenter | Qt.AlignVCenter))
 
 Layout_line3.addWidget(RadioGroupBox)
 Layout_line3.addWidget(AnsGroupbox)
