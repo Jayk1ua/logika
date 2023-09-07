@@ -28,17 +28,41 @@ win_card = QWidget()
 # Тестові данні
 def testlist():
 
-    frm = Question('Яблуко', 'apple', 'application', 'pinapple', 'apply')
+    frm = Question('Ноутбук', 'Laptop', 'Notepad', 'Computer', 'Phone')
     questions_listmodel.form_list.append(frm)
-    frm = Question('Дім', 'house', 'horse', 'hurry', 'hour')
+    frm = Question('Планшет', 'Tablet', 'Computer', 'Laptop', 'Phone')
     questions_listmodel.form_list.append(frm)
-    frm = Question('Мишка', 'mouse', 'mouth', 'muse', 'museum')
+    frm = Question('Телефон', 'Phone', 'Laptop', 'Computer', 'Tablet')
     questions_listmodel.form_list.append(frm)
-    frm = Question('Число', 'number', 'digit', 'amount', 'summary')
+    frm = Question('Компютер', 'Computer', 'Laptop', 'Tablet', 'Phone')
+    questions_listmodel.form_list.append(frm)
+    frm = Question('Клавіатура', 'Keyboard', 'Mouse', 'Watch', 'Monitor')
+    questions_listmodel.form_list.append(frm)
+    frm = Question('Принтер', 'Printer', 'Mouse', 'Keyboard', 'Watch')
+    questions_listmodel.form_list.append(frm)
+    frm = Question('Телевізор', 'TV', 'Watch', 'Monitor', 'Computer')
+    questions_listmodel.form_list.append(frm)
+    frm = Question('Playstation', 'PS', 'PC', 'Xbox', 'Phone')
     questions_listmodel.form_list.append(frm)
 
 # Функції для проведення тесту
 
+win_main.setStyleSheet('''
+                        background-color: black;
+                        color: white;
+                        font-size: 20px;
+                        border: 2px solid yellow; 
+                        ''')
+
+
+win_card.setStyleSheet('''
+                        background-color: black;
+                        color: white;
+                        font-size: 20px;
+                        border: 2px solid yellow; 
+                        ''')
+
+lb_Result.setStyleSheet('margin: 20px')
 
 def set_card():
     ''' задає, який вигляд має вікно картки'''
