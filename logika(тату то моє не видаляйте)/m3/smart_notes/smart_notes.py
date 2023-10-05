@@ -90,7 +90,7 @@ def show_note():
     lst_tags.addItems(notes[key]['теги'])
 
 
-#Програмування кнопок
+#Програмування кнопок note
 def add_note():
     note_name, ok = QInputDialog.getText(window, 'Додати замітку', 'Назва замітки')
 
@@ -115,12 +115,67 @@ def del_note():
         lst_tags.clear()
         lst_notes.clear()
 
-        lst_notes.additems(notes)
+        lst_notes.addItems(notes)
         writeToFile()
 
 
-#!!!
+#Програмування кнопок tag
+def add_teg():
+    key = lst_notes.currentItem().text()
+    tag = btn_tag_searchfor.text()
+
+    notes[key]['теги'].append(tag)
+    lst_tags.addItem(tag)
+    btn_tag_searchfor.clear()
+    writeToFile()
+
+def del_teg():
+    key  = lst_notes.currentItem().text()
+    tag = lst_tags.currentItem.text()
+
+    notes[key]['теги'].remove(tag)
+
+    lst_tags.clear()
+    lst_tags.addItems(notes[key]['теги'])
+    writeToFile()
+
+def search_teg():
+    tag = btn_tag_searchfor.text()
+
+    if btn_tag_search.text() == 'Шукати за тегом':
+        filtered_notes = {}
+
+
+        for key in notes:
+            if tag in notes[key]['теги']:
+                filtered_notes[key] = notes[key]
+        
+        btn_tag_search.setText('Скинути пошук')
+
+        print(filtered_notes)
+
+        lst_notes.clear()
+        lst_notes.addItems(filtered_notes)
+
+        lst_tags.clear()
+
+    elif btn_tag_search.text() == 'Скинути пошук':
+        btn_tag_search.setText('Шукати за тегом')
+
+        lst_notes.clear()
+        lst_tags.clear()
+        btn_tag_searchfor.clear()
+
+        lst_notes.addItems(notes)
+        
+
+
+#Під'єднання кнопок
 lst_notes.itemClicked.connect(show_note)
+
+btn_tag_add.clicked.connect(add_teg)
+btn_tag_unpin.clicked.connect(del_teg)
+btn_tag_search.clicked.connect(search_teg)
 
 btn_add_notes.clicked.connect(add_note)
 btn_save_notes.clicked.connect(save_note)
