@@ -15,7 +15,12 @@ def writeToFile():
 #Вікно
 app = QApplication([])
 window = QWidget()
-
+window.setStyleSheet('''
+                        background-color: black;
+                        color: orange;
+                        font-size: 20px;
+                        border: 2px solid purple; 
+                        ''')
 
 
 #Кнопки
