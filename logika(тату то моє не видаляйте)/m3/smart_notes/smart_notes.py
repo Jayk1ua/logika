@@ -131,7 +131,7 @@ def add_teg():
 
 def del_teg():
     key  = lst_notes.currentItem().text()
-    tag = lst_tags.currentItem.text()
+    tag = lst_tags.currentItem().text()
 
     notes[key]['теги'].remove(tag)
 
