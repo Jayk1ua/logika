@@ -13,14 +13,14 @@ from PIL import Image, ImageFilter
 
 import os
 
-
+#програма
 app = QApplication([])
 window = QWidget()
 window.setStyleSheet('''
                         background-color: black;
                         color: yellow;
                         font-size: 20px;
-                        border: 2px solid purple; 
+                        border: 2px solid yellow; 
                         ''')
 
 #Кнопки
@@ -57,13 +57,13 @@ col2.addLayout(row)
 layout_editor.addLayout(col1, 1)
 layout_editor.addLayout(col2, 4)
 
-#workdir = 'D:\\Ярлики\\logika(тату то моє не видаляйте)\\m4\\\\eazyeditor
 
 
 
 
 
 
+#фільтер файлів
 
 def filter(filenames):
     result = []
@@ -89,7 +89,7 @@ def showfilenamelist():
 
 
 
-
+#Клас
 class ImageProcessor():
     def __init__(self):
         self.original = None
@@ -129,6 +129,32 @@ class ImageProcessor():
         self.original.save(image_path)
         self.show_image(image_path)
 
+
+
+    def do_bw(self):
+        self.original = self.original.convert('L')
+        self.saveAndShowImage()
+
+    def do_left(self):
+        self.original = self.original.transpose(Image.ROTATE_90)
+        self.saveAndShowImage()
+
+    def do_right(self):
+        self.original = self.original.transpose(Image.ROTATE_270)
+        self.saveAndShowImage()
+
+
+    def flip(self):
+        self.original = self.original.transpose(Image.FLIP_LEFT_RIGHT)
+        self.saveAndShowImage()
+
+
+    def do_sharp(self):
+        self.original = self.original.filter(ImageFilter.SHARPEN)
+        self.saveAndShowImage()
+
+
+#Показ вибраного фото
 def showChosenItem():
     filename = listpicture.currentItem().text()
     work_image.LoadImage(filename)
@@ -137,12 +163,24 @@ def showChosenItem():
 
 work_image = ImageProcessor()
 
-
+#Під'єднання
 listpicture.itemClicked.connect(showChosenItem)
+
 btn_folder.clicked.connect(showfilenamelist)
 
+btn_bw.clicked.connect(work_image.do_bw)
+
+btn_left.clicked.connect(work_image.do_left)
+
+btn_right.clicked.connect(work_image.do_right)
+
+btn_mirror.clicked.connect(work_image.flip)
+
+btn_sharpness.clicked.connect(work_image.do_sharp)
 
 
+#Показ
+window.resize(900,600)
 window.setLayout(layout_editor)
 window.show()
 app.exec_()
