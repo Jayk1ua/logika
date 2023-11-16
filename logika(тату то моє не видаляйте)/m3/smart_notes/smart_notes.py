@@ -7,9 +7,11 @@ from PyQt5.QtWidgets import (
     QFormLayout, QGroupBox, QButtonGroup, QRadioButton, QSpinBox)
 import json 
 
+
 def writeToFile():
     with open('notes.json', 'w', encoding='utf-8') as file:
         json.dump(notes, file, ensure_ascii=False, sort_keys=True, indent=4)
+
 
 
 #Вікно
@@ -188,5 +190,6 @@ btn_del_notes.clicked.connect(del_note)
 lst_notes.addItems(notes)
 
 #Показ
+window.resize(900,660)
 window.show()
 app.exec_()
